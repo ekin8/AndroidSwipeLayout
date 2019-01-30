@@ -40,9 +40,9 @@ When I start to make this library, I set some goals:
 
 ```groovy
 dependencies {
-    compile 'com.android.support:recyclerview-v7:21.0.0'
-    compile 'com.android.support:support-v4:20.+'
-    compile "com.daimajia.swipelayout:library:1.2.0@aar"
+    api 'androidx.recyclerview:recyclerview:1.0.0'
+    api 'androidx.legacy:legacy-support-v4:1.0.0'
+    api "com.daimajia.swipelayout2:library:2.0.0"
 }
 ```
 
@@ -50,19 +50,19 @@ dependencies {
 
 ```xml
 <dependency>
-	<groupId>com.google.android</groupId>
-	<artifactId>support-v4</artifactId>
-	<version>r6</version>
+	<groupId>androidx.legacy</groupId>
+	<artifactId>legacy-support-v4</artifactId>
+	<version>1.0.0</version>
 </dependency>
 <dependency>
-	<groupId>com.google.android</groupId>
-	<artifactId>recyclerview-v7</artifactId>
-	<version>21.0.0</version>
+	<groupId>androidx.recyclerview</groupId>
+	<artifactId>recyclerview</artifactId>
+	<version>1.0.0</version>
 </dependency>
 <dependency>
-    <groupId>com.daimajia.swipelayout</groupId>
+    <groupId>com.daimajia.swipelayout2</groupId>
     <artifactId>library</artifactId>
-    <version>1.2.0</version>
+    <version>2.0.0</version>
     <type>apklib</type>
 </dependency>
 ```
