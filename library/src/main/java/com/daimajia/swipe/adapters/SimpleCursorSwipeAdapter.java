@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.daimajia.swipe.SwipeLayout;
-import com.daimajia.swipe.implments.SwipeItemMangerImpl;
+import com.daimajia.swipe.implments.SwipeItemAdapterMangerImpl;
 import com.daimajia.swipe.interfaces.SwipeAdapterInterface;
 import com.daimajia.swipe.interfaces.SwipeItemMangerInterface;
 import com.daimajia.swipe.util.Attributes;
@@ -17,7 +17,7 @@ import androidx.cursoradapter.widget.SimpleCursorAdapter;
 
 public abstract class SimpleCursorSwipeAdapter extends SimpleCursorAdapter implements SwipeItemMangerInterface, SwipeAdapterInterface {
 
-    private SwipeItemMangerImpl mItemManger = new SwipeItemMangerImpl(this);
+    private SwipeItemAdapterMangerImpl mItemManger = new SwipeItemAdapterMangerImpl(this);
 
     protected SimpleCursorSwipeAdapter(Context context, int layout, Cursor c, String[] from, int[] to, int flags) {
         super(context, layout, c, from, to, flags);
@@ -29,8 +29,13 @@ public abstract class SimpleCursorSwipeAdapter extends SimpleCursorAdapter imple
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        boolean convertViewIsNull = convertView == null;
         View v = super.getView(position, convertView, parent);
-        mItemManger.bind(v, position);
+        if(convertViewIsNull){
+            mItemManger.initialize(v, position);
+        }else{
+            mItemManger.updateConvertView(v, position);
+        }
         return v;
     }
 

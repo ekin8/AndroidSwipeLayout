@@ -12,7 +12,7 @@ public interface SwipeItemMangerInterface {
     void closeItem(int position);
 
     void closeAllExcept(SwipeLayout layout);
-    
+
     void closeAllItems();
 
     List<Integer> getOpenItems();

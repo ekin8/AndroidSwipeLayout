@@ -3,7 +3,7 @@ package com.daimajia.swipe.adapters;
 import android.view.ViewGroup;
 
 import com.daimajia.swipe.SwipeLayout;
-import com.daimajia.swipe.implments.SwipeItemMangerImpl;
+import com.daimajia.swipe.implments.SwipeItemRecyclerMangerImpl;
 import com.daimajia.swipe.interfaces.SwipeAdapterInterface;
 import com.daimajia.swipe.interfaces.SwipeItemMangerInterface;
 import com.daimajia.swipe.util.Attributes;
@@ -14,18 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public abstract class RecyclerSwipeAdapter<VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> implements SwipeItemMangerInterface, SwipeAdapterInterface {
 
-    public SwipeItemMangerImpl mItemManger = new SwipeItemMangerImpl(this);
+    public SwipeItemRecyclerMangerImpl mItemManger = new SwipeItemRecyclerMangerImpl(this);
 
     @Override
     public abstract VH onCreateViewHolder(ViewGroup parent, int viewType);
 
     @Override
     public abstract void onBindViewHolder(VH viewHolder, final int position);
-
-    @Override
-    public void notifyDatasetChanged() {
-        super.notifyDataSetChanged();
-    }
 
     @Override
     public void openItem(int position) {

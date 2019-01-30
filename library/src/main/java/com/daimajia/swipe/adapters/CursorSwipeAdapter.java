@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.daimajia.swipe.SwipeLayout;
-import com.daimajia.swipe.implments.SwipeItemMangerImpl;
+import com.daimajia.swipe.implments.SwipeItemAdapterMangerImpl;
 import com.daimajia.swipe.interfaces.SwipeAdapterInterface;
 import com.daimajia.swipe.interfaces.SwipeItemMangerInterface;
 import com.daimajia.swipe.util.Attributes;
@@ -17,7 +17,7 @@ import androidx.cursoradapter.widget.CursorAdapter;
 
 public abstract class CursorSwipeAdapter extends CursorAdapter implements SwipeItemMangerInterface, SwipeAdapterInterface {
 
-    private SwipeItemMangerImpl mItemManger = new SwipeItemMangerImpl(this);
+    private SwipeItemAdapterMangerImpl mItemManger = new SwipeItemAdapterMangerImpl(this);
 
     protected CursorSwipeAdapter(Context context, Cursor c, boolean autoRequery) {
         super(context, c, autoRequery);
@@ -29,8 +29,13 @@ public abstract class CursorSwipeAdapter extends CursorAdapter implements SwipeI
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        boolean convertViewIsNull = convertView == null;
         View v = super.getView(position, convertView, parent);
-        mItemManger.bind(v, position);
+        if (convertViewIsNull) {
+            mItemManger.initialize(v, position);
+        } else {
+            mItemManger.updateConvertView(v, position);
+        }
         return v;
     }
 
@@ -47,11 +52,6 @@ public abstract class CursorSwipeAdapter extends CursorAdapter implements SwipeI
     @Override
     public void closeAllExcept(SwipeLayout layout) {
         mItemManger.closeAllExcept(layout);
-    }
-
-    @Override
-    public void closeAllItems() {
-        mItemManger.closeAllItems();
     }
 
     @Override
