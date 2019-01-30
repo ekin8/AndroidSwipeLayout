@@ -1,0 +1,19 @@
+buildscript {
+    repositories {
+        maven {
+            url 'http://maven.foshan100.com/repository/maven-public/'
+        }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.3.0'
+        classpath "com.meicloud.plugin:mission-lib-plugin:1.9.6"
+    }
+}
+
+allprojects {
+    repositories {
+        maven {
+            url 'http://maven.foshan100.com/repository/maven-public/'
+        }
+    }
+}

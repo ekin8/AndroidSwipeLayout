@@ -1,0 +1,20 @@
+apply plugin: 'com.android.library'
+
+group = GROUP
+version = VERSION_NAME
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 25
+    }
+}
+
+dependencies {
+    api 'androidx.recyclerview:recyclerview:1.0.0'
+    api 'androidx.legacy:legacy-support-v4:1.0.0'
+}
+apply from: './gradle-mvn-push.gradle'
